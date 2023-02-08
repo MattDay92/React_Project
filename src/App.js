@@ -1,21 +1,27 @@
 import React, { Component } from 'react'
-import Nav from './Nav';
-import Login from './Login';
-import Logout from './Logout';
+import Nav from './components/Nav';
+import Login from './views/Login';
+import Logout from './views/Logout';
+import ToDo from './views/ToDo'
+import { Routes, Route, BrowserRouter } from 'react-router-dom';
+
 
 export default class App extends Component {
-  constructor(){
+  constructor() {
     super();
   }
   render() {
     return (
-      <div>
-      <Nav />
-      <br/>
-      <Login />
-      <br/>
-      <Logout />
-      </div>
+      <BrowserRouter>
+        <div>
+          <Nav />
+          <Routes>
+            <Route path='/login' element={<Login />} />
+            <Route path='/logout' element={<Logout />} />
+            <Route path='/todo' element={<ToDo />} />
+          </Routes>
+        </div>
+      </BrowserRouter>
     )
   }
 }
