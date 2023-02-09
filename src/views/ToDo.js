@@ -11,19 +11,15 @@ export default class ToDo extends Component {
   }
 
   showToDo = () => {
-    console.log('before showToDo')
-    return this.state.info.map((c) => { return <ToDoItem itemInfo={c} /> })
+    console.log(this)
+    return this.state.info.map((c, i) => { return <ToDoItem key={i} itemInfo={c} /> })
   };
 
   addToList = (e) => {
     e.preventDefault()
     const todo = e.target.todoitem.value
-    console.log(this)
     const day = e.target.day.value
     this.setState(this.state.info = [...this.state.info, { todo: todo, day: day}])
-    this.showToDo()
-    console.log(this.state.info)
-    console.log(`Added ${todo} and ${day} to info.`)
   };
 
 
