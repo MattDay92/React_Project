@@ -64,16 +64,21 @@ import { Link } from 'react-router-dom'
 
 
 
-const pages = [
-<Link className="nav-link active text-white" aria-current="page" to="/">To Do</Link>, 
-<Link className="nav-link text-white" to="/login">Login</Link>, 
-<Link className="nav-link text-white" to="/SignUp">SignUp</Link>
-];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
-function ResponsiveAppBar() {
+function ResponsiveAppBar({logMeOut}) {
     const [anchorElNav, setAnchorElNav] = React.useState(null);
     const [anchorElUser, setAnchorElUser] = React.useState(null);
+
+
+
+    const pages = [
+        <Link className="nav-link active text-white" aria-current="page" to="/">To Do</Link>, 
+        <Link className="nav-link text-white" to="/login">Login</Link>, 
+        <Link className="nav-link text-white" to="/SignUp">SignUp</Link>, 
+        <Link className='nav-link text-white' to="/login" onClick={logMeOut}>Logout</Link>, 
+        
+        ];
 
     const handleOpenNavMenu = (event) => {
         setAnchorElNav(event.currentTarget);
@@ -109,7 +114,7 @@ function ResponsiveAppBar() {
                             textDecoration: 'none',
                         }}
                     >
-                        LOGO
+                        To-Do
                     </Typography>
 
                     <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
@@ -163,7 +168,7 @@ function ResponsiveAppBar() {
                             textDecoration: 'none',
                         }}
                     >
-                        LOGO
+                        To-Do
                     </Typography>
                     <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
                         {pages.map((page) => (
